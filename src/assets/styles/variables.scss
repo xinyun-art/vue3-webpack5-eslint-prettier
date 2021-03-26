@@ -1,0 +1,6 @@
+// variables.scss
+$base: 750; // 设计稿基准
+// $pixel / 750 = x / 100vw
+@function px2vw($pixel) {
+	@return ($pixel / $base) * 100vw;
+}
