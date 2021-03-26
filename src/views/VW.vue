@@ -2,7 +2,9 @@
   <div class="vw">
     <div class="header">计算机科学</div>
     <ul class="math__list">
-      <li v-for="(item, index) of math" :key="index" class="math__item">{{ item }}</li>
+      <li v-for="(item, index) of math" :key="index" class="math__item">
+        {{ item }}
+      </li>
     </ul>
     <div class="banner" />
     <div class="nail--fixed" />
@@ -14,7 +16,7 @@ import { onMounted, reactive } from 'vue'
 export default {
   name: 'VW',
   setup() {
-    const math = reactive(['离散数学', '线性代数', '概率论']);
+    const math = reactive(['离散数学', '线性代数', '概率论'])
 
     onMounted(() => {
       console.log('VW-onMounted')

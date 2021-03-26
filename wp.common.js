@@ -173,8 +173,16 @@ module.exports = {
     new VueLoaderPlugin(),
     new ESLintPlugin({
       extensions: ['js', 'vue'],
-      // 自动修复。
-      // 自从eslint推出--fix命令后，如果觉得eslint格式化规则已经够用的话，其实也可以不用prettier了。
+      /**
+       * 自动修复。
+       * 自从eslint推出--fix命令后，如果觉得eslint格式化规则已经够用的话，其实也可以不用prettier了。
+       * 但此项目中是配置了prettier以及一些与prettier相关的eslint插件的。目的是让prettier用于格式化代码，而eslint只用来检测代码质量。
+       * 如果VsCode不下载Prettier-Code formatter插件的话，在保存文件时，
+       * prettier只能实现发现不符合格式化规则的地方输出报告（因为使用了eslint-plugin-prettier插件，其实报告本质上也是由eslint输出的），无法自动格式化文件，
+       * 一个解决办法就是使用--fix命令（配置下方fix:true），这样就能实现在保存文件时，eslint自动修复不符合规范的地方（由eslint使用prettier的规则去修复）。
+       * 但这样我个人觉得不是很好，因为eslint使用--fix命令修复会把整个项目能检测到的文件都修复一遍。
+       * 所以我还是推荐使用VsCode插件Prettier-Code formatter，配置保存文件时自动使用prettier格式化。
+       */
       // fix: true,
     }),
   ],
